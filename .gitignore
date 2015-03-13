@@ -1,0 +1,15 @@
+*.class
+*~
+.classpath
+.project
+.settings
+target
+bin
+.metadata
+com/
+license/
+inria/
+META-INF/
+resources/
+org/
+*.properties

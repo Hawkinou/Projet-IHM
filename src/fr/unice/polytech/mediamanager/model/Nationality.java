@@ -2,7 +2,7 @@ package fr.unice.polytech.mediamanager.model;
 
 /**
  * Classe representant les nationalites des personnes.
- *
+ *as
  * @author Brel Christian <brel@polytech.unice.fr>
  * @version 05/06/2009
  */

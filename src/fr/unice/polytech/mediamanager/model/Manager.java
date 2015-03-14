@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.inria.acacia.corese.api.*;
 import fr.inria.acacia.corese.exceptions.EngineException;
+import fr.unice.polytech.mediamanager.control.ResearchControl;
 
 /**
  * Classe qui permet la gestion des medias.
@@ -19,7 +20,7 @@ public class Manager implements IManager {
     /**
      * Constructeur.
      */
-    public Manager() {
+    private Manager() {
         ef = new EngineFactory();
 		engine = ef.newInstance();
 		
@@ -35,7 +36,12 @@ public class Manager implements IManager {
 			e.printStackTrace();
 		}
     }
-
+	private static Manager INSTANCE = new Manager();
+	 
+	/** Point d'accès pour l'instance unique du singleton */
+	public static Manager getInstance()
+	{	return INSTANCE;
+	}
     /**
      * Permet de recharger le moteur Corese.
      */

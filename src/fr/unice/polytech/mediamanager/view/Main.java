@@ -11,20 +11,20 @@ public class Main {
 	 * @param args
 	 */
 	 JFrame frame;
-	 JPanel affichage;
+	 JPanel display;
 	 JPanel menu;
-	 JPanel recherche;
+	 JPanel research;
 	 
 	public Main() {
 		frame = new JFrame("Mediatheque");
 		Dimension d = new Dimension(800, 600);
 		frame.setMinimumSize(d) ; 
-		affichage = new Display(this);
+		display = new Display(this);
 		menu = new Menu(this);
-		recherche = new Research(this);
-	    frame.add(affichage,BorderLayout.CENTER);
+		research = new Research(this);
+	    frame.add(display,BorderLayout.CENTER);
 	    frame.add(menu,BorderLayout.NORTH);
-	    frame.add(recherche,BorderLayout.SOUTH);
+	    frame.add(research,BorderLayout.SOUTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
@@ -33,6 +33,19 @@ public class Main {
 		 frame.revalidate();
 		 frame.repaint();
 	}
+	public void showMainPage(){
+		frame.remove(display);
+		refresh();
+		
+	}
+	
+	public void showResultResearch(String researchType, String researchBy, String entry){
+		frame.remove(display);
+		display=new ResearchResult(this, researchType,  researchBy,  entry);
+		frame.add(display);
+		refresh();
+	}
+	
 	
 	public static void main(String[] args) {
 		new Main();

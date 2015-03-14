@@ -10,46 +10,50 @@ import javax.swing.JTextArea;
 
 public class Research extends JPanel {
 	Main frame;
-	JComboBox recherchePossible;
-	JComboBox typeRecherche;
-	JTextArea zoneText;
+	JComboBox researchAvailable;
+	JComboBox researchType;
+	JTextArea textZone;
 	
 	public Research(Main main){
 		frame=main;
 	    setLayout(new GridLayout(1,4));
-	    String[] nomRecherchePossible = {"Film", "Genre", "Acteur", "Directeur", "Nationnalite"};
-	    String[] nomTypeRecherchePossible = {"Titre de film", "Genre", "Acteur", "Directeur"};
+	    String[] nameResearchAvailable = {"Film", "Genre", "Actor", "Director", "Nationality"};
+	    String[] nameResearchType = {"Titre de film", "Genre", "Actor", "Director"};
 
 	  //Create the combo box, select item at index 4.
 	  //Indices start at 0, so 4 specifies the pig.
-	  recherchePossible = new JComboBox(nomRecherchePossible);
-	  recherchePossible.addActionListener(new MyActionListener());
-	  add(recherchePossible);
-      typeRecherche = new JComboBox(nomTypeRecherchePossible);
-	  recherchePossible.addActionListener(new MyActionListener2());
+	  researchAvailable = new JComboBox(nameResearchAvailable);
+	  researchAvailable.addActionListener(new MyActionListener());
+	  add(researchAvailable);
+	  researchType = new JComboBox(nameResearchType);
+	  researchType.addActionListener(new MyActionListener2());
 
-	  add(typeRecherche);
+	  add(researchType);
 
-	  zoneText = new JTextArea();
-	  add(zoneText);
+	  textZone = new JTextArea();
+	  add(textZone);
 	  JButton bouton= new JButton("Rechercher");
+	  bouton.addActionListener(new researchListener());
 	  add(bouton);
 	}
-	
+	 private class researchListener implements ActionListener {
+		 public void actionPerformed(ActionEvent event) {
+			 frame.showResultResearch((String)researchAvailable.getSelectedItem(),
+					 (String)researchType.getSelectedItem(),
+					 textZone.getText());
+		 }
+	 }
 	 private class MyActionListener implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {
-				if(recherchePossible.getSelectedItem().equals("Film")){
-					typeRecherche.setEnabled(true);
-					zoneText.setEnabled(true);
-				}
-				else if(recherchePossible.getSelectedItem().equals("Nationnalite")){
-					typeRecherche.setEnabled(false);
-					zoneText.setEnabled(false);
+				if(researchAvailable.getSelectedItem().equals("Film")){
+					researchType.setEnabled(true);
+					textZone.setEnabled(true);
 				}
 				else{
-					typeRecherche.setEnabled(false); 
-					zoneText.setEnabled(true);
+					researchType.setEnabled(false); 
+					textZone.setEnabled(false);
 				}
+				textZone.setText("");
 		 }
 	 }
 	 private class MyActionListener2 implements ActionListener {

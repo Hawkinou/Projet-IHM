@@ -51,4 +51,11 @@ public class Main {
 		new Main();
 	}
 
+	public void addFilm() {
+		frame.remove(display);
+		display=new AddFilm(this);
+		frame.add(display);
+		refresh();		
+	}
+
 }

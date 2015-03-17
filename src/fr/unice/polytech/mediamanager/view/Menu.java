@@ -27,21 +27,19 @@ public class Menu extends JPanel {
 
 	JMenuItem suppr = new JMenuItem("Supprimer");
 	 suppr.addActionListener(new MyActionListener3());
-
-
-
+	 
 	films.add(ajout);
 	films.add(modif);
 	films.add(suppr);
-
-
+	
 	menuBar.add(films);
 	add(menuBar);
 	}
+	
 	 private class MyActionListener implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {
-				System.out.println("ajout");
-		 }
+			 frame.addFilm();
+			 }
 	 }
 	 private class MyActionListener2 implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {

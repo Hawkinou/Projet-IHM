@@ -11,8 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fr.unice.polytech.mediamanager.control.ResearchControl;
-import fr.unice.polytech.mediamanager.model.Genre;
-import fr.unice.polytech.mediamanager.model.Nationality;
+import fr.unice.polytech.mediamanager.model.*;
 
 public class ResearchResult extends Display {
 	JPanel returnButton;
@@ -72,18 +71,31 @@ public class ResearchResult extends Display {
 	}
 
 	private void sendDirectorRequest() {
-		// TODO Auto-generated method stub
-		
+		ArrayList<Director> director =ResearchControl.getInstance().getDirector();
+		list.setLayout(new GridLayout((int)(director.size()/2),2));
+		for (Director direct : director){
+			list.add(new JButton(direct.getFirstname()+" " +direct.getLastname()));
+			//TODO Ajouter une action listener au button qui mene vers la fiche de chaques director
+		}		
+
 	}
 
 	private void sendActorRequest() {
-		// TODO Auto-generated method stub
-		
+		ArrayList<Actor> actors =ResearchControl.getInstance().getActor();
+		list.setLayout(new GridLayout((int)(actors.size()/2),2));
+		for (Actor actor : actors){
+			list.add(new JButton(actor.getFirstname()+" " +actor.getLastname()));
+			//TODO Ajouter une action listener au button qui mene vers la fiche de chaques director
+		}			
 	}
 
 	private void sendFilmRequest(String researchBy, String entry) {
-		ResearchControl.getInstance().getFilm();
-
+		ArrayList<Film> films =ResearchControl.getInstance().getFilm(researchBy,entry);
+		list.setLayout(new GridLayout((int)(films.size()/2),2));
+		for (Film film : films){
+			list.add(new JButton(film.getTitle()));
+			//TODO Ajouter une action listener au button qui mene vers la fiche de chaques director
+		}
 	}
 	
 	 private class returnListener implements ActionListener {

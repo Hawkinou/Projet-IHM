@@ -26,7 +26,6 @@ public class Research extends JPanel {
 	  researchAvailable.addActionListener(new MyActionListener());
 	  add(researchAvailable);
 	  researchType = new JComboBox(nameResearchType);
-	  researchType.addActionListener(new MyActionListener2());
 
 	  add(researchType);
 
@@ -56,9 +55,5 @@ public class Research extends JPanel {
 				textZone.setText("");
 		 }
 	 }
-	 private class MyActionListener2 implements ActionListener {
-		 public void actionPerformed(ActionEvent event) {
-			
-		 }
-	 }
+
 }

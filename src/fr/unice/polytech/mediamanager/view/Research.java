@@ -20,8 +20,6 @@ public class Research extends JPanel {
 	    String[] nameResearchAvailable = {"Film", "Genre", "Actor", "Director", "Nationality"};
 	    String[] nameResearchType = {"Titre de film", "Genre", "Actor", "Director"};
 
-	  //Create the combo box, select item at index 4.
-	  //Indices start at 0, so 4 specifies the pig.
 	  researchAvailable = new JComboBox(nameResearchAvailable);
 	  researchAvailable.addActionListener(new MyActionListener());
 	  add(researchAvailable);

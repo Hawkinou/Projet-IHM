@@ -62,7 +62,7 @@ public class ResearchResult extends Display {
 
 	private void sendNationnalityRequest() {
 		ArrayList<Nationality> nationality =ResearchControl.getInstance().getNationality();
-		list.setLayout(new GridLayout((int)(nationality.size()/2),2));
+		list.setLayout(new GridLayout((int)(nationality.size()/2),1));
 		for (Nationality nation : nationality){
 			
 			list.add(new JLabel(nation.getLabelEn(),JLabel.CENTER));
@@ -93,7 +93,10 @@ public class ResearchResult extends Display {
 		ArrayList<Film> films =ResearchControl.getInstance().getFilm(researchBy,entry);
 		list.setLayout(new GridLayout((int)(films.size()/2),2));
 		for (Film film : films){
-			list.add(new JButton(film.getTitle()));
+			JButton button = new JButton(film.getTitle());
+			button.addActionListener(new filmListener(film.getTitle()));
+			list.add(button);
+			
 			//TODO Ajouter une action listener au button qui mene vers la fiche de chaques director
 		}
 	}
@@ -101,6 +104,15 @@ public class ResearchResult extends Display {
 	 private class returnListener implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {
 			frame.showMainPage();
+		 }
+	 }
+	 private class filmListener implements ActionListener {
+		 String titre;
+		 public filmListener(String titre){
+			 titre = titre;
+		 }
+		 public void actionPerformed(ActionEvent event) {
+			new Fiche(event.getActionCommand());
 		 }
 	 }
 }

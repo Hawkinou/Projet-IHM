@@ -39,7 +39,7 @@ public class TD1 {
 		frame.setVisible(true);
 		*/
 		//EXO 3
-		/*
+		
 		JFrame frame = new JFrame("");
 		frame.setSize(200,200);
 		frame.setMinimumSize(new Dimension(200, 200));
@@ -77,7 +77,7 @@ public class TD1 {
 		//pane.add(menuBar);
 		pane.add(text);
 		frame.setVisible(true);
-		*/
+		/*
 		JFrame frame = new JFrame("");
 		frame.setSize(200,200);
 		frame.setMinimumSize(new Dimension(200, 200));
@@ -104,7 +104,7 @@ public class TD1 {
 		//frame.add(image, BorderLayout.WEST);
 		frame.add(new Fenetre());
 
-		frame.setVisible(true);
+		frame.setVisible(true);*/
 	}
 
 }

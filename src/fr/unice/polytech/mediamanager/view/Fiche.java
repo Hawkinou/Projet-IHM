@@ -39,7 +39,7 @@ public class Fiche {
 		frame.add(affiche, BorderLayout.CENTER);
 		JPanel boutons = new JPanel();
 
-		boutons.setLayout(new GridLayout(4,0));
+		boutons.setLayout(new GridLayout(5,0));
 		ArrayList<Actor> listActor = film.getActors();
         JPanel acteur = new JPanel(new GridLayout(listActor.size(),0));
         acteur.add(new JLabel("Acteurs :"));
@@ -51,6 +51,10 @@ public class Fiche {
 
         directeur.add(new JLabel("Directeur :"));
         directeur.add(new JLabel(film.getDirector().getFirstname()+" "+ film.getDirector().getLastname()));
+        
+        JPanel runtime = new JPanel(new GridLayout(2,0));
+        runtime.add(new JLabel("Duree :"));
+        runtime.add(new JLabel(""+film.getRuntime()));
 
 		ArrayList<Genre> listGenre = film.getGenres();
 
@@ -60,15 +64,16 @@ public class Fiche {
         for (Genre genr : listGenre){
         	genre.add(new JLabel(genr.getLabelFr()));
         }
-
-        JTextArea synopsis = new JTextArea(film.getSynopsis());
+        
+        JTextArea synopsis = new JTextArea(addaptString(film.getSynopsis()));
         synopsis.setWrapStyleWord(true);
         synopsis.setColumns(30);
-        //synopsis.setEnabled(false);
+        synopsis.setEnabled(false);
         synopsis.setDisabledTextColor(Color.BLACK);
 		
 		boutons.add(acteur);
 		boutons.add(directeur);
+        boutons.add(runtime);
 		boutons.add(genre);
 		boutons.add(synopsis);
 
@@ -78,6 +83,22 @@ public class Fiche {
 	    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 	}
+	
+	private String addaptString(String synopsis) {
+		if (synopsis.length()>80){
+			int numberOfReturn=synopsis.length()/80;
+			for (int j = 1;j<=numberOfReturn;j++){
+				for (int i = 80*j ; i>1+80*(j-1); i--){
+					if (synopsis.charAt(i)==' '){
+						synopsis=synopsis.substring(0, i)+"\n"+synopsis.substring(i+1, synopsis.length());
+						break;
+					}
+				}
+			}
+		}
+		return synopsis;
+	}
+	
 	private class Affiche extends JPanel{
 		 public void paintComponent(Graphics g){                
         

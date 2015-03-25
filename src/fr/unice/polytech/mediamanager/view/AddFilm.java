@@ -3,6 +3,7 @@ package fr.unice.polytech.mediamanager.view;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -16,7 +17,9 @@ public class AddFilm extends Display {
 	
 	public AddFilm(Main main) {
 		super(main);
-		this.setLayout(new GridLayout(10,2));
+		this.setLayout(new GridLayout(8,2));
+		this.add(new JLabel("Titre :"));
+		this.add(new)
 		
 	}
 	/**

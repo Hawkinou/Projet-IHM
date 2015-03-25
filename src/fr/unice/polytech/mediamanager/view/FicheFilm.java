@@ -23,17 +23,15 @@ import fr.unice.polytech.mediamanager.model.Film;
 import fr.unice.polytech.mediamanager.model.Genre;
 import fr.unice.polytech.mediamanager.model.Manager;
 
-public class Fiche {
+public class FicheFilm {
 	Film film;
 
-	public Fiche(String titreFilm){
+	public FicheFilm(String titreFilm){
 		ArrayList<Film> films = Manager.getInstance().searchByTitle(titreFilm);
 		film =films.get(0);
 		
 		JFrame frame = new JFrame(film.getTitle());
 		frame.setLayout(new BorderLayout());
-		JPanel titre = new JPanel();
-		frame.setSize(200,200);
 		frame.setMinimumSize(new Dimension(800, 600));
 		Affiche affiche = new Affiche();
 		frame.add(affiche, BorderLayout.CENTER);
@@ -78,7 +76,6 @@ public class Fiche {
 		boutons.add(synopsis);
 
 		frame.add(boutons, BorderLayout.EAST);
-		frame.add(titre, BorderLayout.PAGE_START);
 		frame.pack();
 	    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);

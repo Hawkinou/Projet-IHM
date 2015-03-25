@@ -35,8 +35,7 @@ public class Main {
 	}
 	public void showMainPage(){
 		frame.remove(display);
-		refresh();
-		
+		refresh();	
 	}
 	
 	public void showResultResearch(String researchType, String researchBy, String entry){

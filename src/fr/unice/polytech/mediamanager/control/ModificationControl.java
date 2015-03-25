@@ -28,7 +28,7 @@ public class ModificationControl {
 	}	
 
 	public void addFilm(String id, String title, Director director, ArrayList<Actor> actors, ArrayList<Genre> genres, int runtime, String poster, String synopsis){
-		Film film = new Film(id,title,director,actors,genres,runtime,poster,synopsis)
+		Film film = new Film(id,title,director,actors,genres,runtime,poster,synopsis);
 		Manager.getInstance().addFilm(film);
 
 	}

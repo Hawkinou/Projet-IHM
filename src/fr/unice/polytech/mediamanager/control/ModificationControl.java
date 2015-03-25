@@ -23,7 +23,7 @@ public class ModificationControl {
 	{	return INSTANCE;
 	}
 	
-	public void addFilm(String id, String title, String director,String actors, String genres, String runtime, String poster, String synopsis){
+	public void addFilm(String title, String director,String actors, String genres, String runtime, String poster, String synopsis){
 
 	}	
 

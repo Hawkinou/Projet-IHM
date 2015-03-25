@@ -1,7 +1,6 @@
 package fr.unice.polytech.mediamanager.view;
 
 import java.awt.GridLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import fr.unice.polytech.mediamanager.control.ModificationControl;
 
 
 
@@ -58,7 +59,8 @@ public class AddFilm extends Display {
 	*/
 	 private class MyActionListener implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {
-			 System.out.println("test");
+			 System.out.println("d");
+			 ModificationControl.getInstance().addFilm(titre.getText(), director.getText(), actor.getText(), genre.getText(), runtime.getText(), affiche.getText(), synopsis.getText());;
 			 }
 	 }
 }

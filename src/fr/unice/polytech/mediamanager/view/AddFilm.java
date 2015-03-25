@@ -1,29 +1,50 @@
 package fr.unice.polytech.mediamanager.view;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import fr.unice.polytech.mediamanager.control.ModificationControl;
+import fr.unice.polytech.mediamanager.control.ResearchControl;
+import fr.unice.polytech.mediamanager.model.Actor;
+import fr.unice.polytech.mediamanager.model.Director;
 
 
 
 
 public class AddFilm extends Display {
 
-	private JTextField titre, director, actor, genre, runtime, affiche,synopsis;
+	private JTextField title, genre, runtime, affiche,synopsis;
+	JPanel actor;
+	JComboBox director, actorBox;
+	private JTextArea info;
 	public AddFilm(Main main) {
 		super(main);
-		titre=new JTextField();
-		director=new JTextField();
-		actor=new JTextField();
+		title=new JTextField();
+		director=new JComboBox();
+		ArrayList<Director> directors = ResearchControl.getInstance().getDirector();
+		for (Director direct : directors){
+			director.addItem(direct);
+		}
+		actor=new JPanel();
+		actorBox=new JComboBox();
+		ArrayList<Actor> actors = ResearchControl.getInstance().getActor();
+		for (Actor act : actors){
+			actorBox.addItem(act);
+		}
+		actor.add(actorBox);
+		JButton buttonAddActor = new JButton("Ajout");
+		actor.add(buttonAddActor);
+		JTextField listActor=new JTextField();
 		genre=new JTextField();
 		runtime=new JTextField();
 		affiche=new JTextField();
@@ -31,7 +52,7 @@ public class AddFilm extends Display {
 
 		this.setLayout(new GridLayout(8,2));
 		this.add(new JLabel("Titre :"));
-		this.add(new JTextField());
+		this.add(title);
 		this.add(new JLabel("Directeur :"));
 		this.add(director);
 		this.add(new JLabel("Acteurs :"));
@@ -47,7 +68,14 @@ public class AddFilm extends Display {
 		JButton button = new JButton("Ajouter");
 		button.addActionListener(new MyActionListener());
 		this.add(button);
+		info =new JTextArea();
+		info.setEnabled(false);
+		info.setBackground(Color.LIGHT_GRAY);
+		info.setDisabledTextColor(Color.BLACK);
+		this.add(info);
+		
 	}
+	
 	/**
     private String title;
     private Director director;
@@ -59,8 +87,8 @@ public class AddFilm extends Display {
 	*/
 	 private class MyActionListener implements ActionListener {
 		 public void actionPerformed(ActionEvent event) {
-			 System.out.println("d");
-			 ModificationControl.getInstance().addFilm(titre.getText(), director.getText(), actor.getText(), genre.getText(), runtime.getText(), affiche.getText(), synopsis.getText());;
-			 }
-	 }
+			 System.out.println(director.getSelectedItem());
+		 	info.setText(ModificationControl.getInstance().addFilm(title.getText(), (Director) director.getSelectedItem(), actor.getText(), genre.getText(), runtime.getText(), affiche.getText(), synopsis.getText()));
+		}
+	}
 }

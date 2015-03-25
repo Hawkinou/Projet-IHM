@@ -173,37 +173,11 @@ public class People {
     public String toString() {
         String returnString = "";
 
-        returnString += "Id: ";
-        returnString += this.id;
-        returnString += "\n";
-
-        returnString += "Firstname: ";
         returnString += this.firstname;
-        returnString += "\n";
+        returnString += " ";
 
-        returnString += "Lastname: ";
         returnString += this.lastname;
-        returnString += "\n";
 
-        returnString += "Nationality: ";
-        returnString += this.nationality.getLabelEn();
-        returnString += "\n";
-
-        returnString += "Birth: ";
-        returnString += this.birth.getYear();
-        returnString += "\n";
-
-        returnString += "Death: ";
-        if(this.death.equals(new Date(0, 0, 0))) {
-            returnString += "////";
-        } else {
-            returnString += this.death.getYear();
-        }
-        returnString += "\n";
-
-        returnString += "Photo: ";
-        returnString += this.photo;
-        returnString += "\n";
 
         return returnString;
     }
